@@ -22,6 +22,7 @@ public class UserServiceImpl  implements UserService {
     //登录，成功为true，失败为false
     public SysUser login(Long id, String password){
         SysUser sysUser = sysUserMapper.selectByUserId(id);
+        System.out.println(sysUser);
         if(sysUser.getUserPassword().equals(password)){
             return sysUser;
         }else {
@@ -31,7 +32,7 @@ public class UserServiceImpl  implements UserService {
 
     //注册用户 必须包含所有选项，如金钱=0和等级=1
     public void register(SysUser sysUser){
-        sysUserMapper.insert(sysUser);
+        sysUserMapper.insertSelective(sysUser);
         Long id=sysUser.getUserId();
         System.out.println(id);
         SysUserRole sysUserRole1 = new SysUserRole();

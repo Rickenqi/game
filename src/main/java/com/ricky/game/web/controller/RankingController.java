@@ -41,8 +41,10 @@ public class RankingController {
     @PutMapping("/ranking")
     public String updateRanking(@RequestBody SysRanking rank) {
         Result result;
+        System.out.println(rank);
         try{
             rankingService.insertPoints(rank);
+            System.out.println(rank);
             result = Result.success(rank);
         } catch (DataAccessException e) {
             result = Result.failure(ResultCode.INTERFACE_OUTTER_INVOKE_ERROR);

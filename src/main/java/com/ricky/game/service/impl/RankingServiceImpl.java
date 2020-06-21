@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ricky.game.dao.SysRankingMapper;
 import com.ricky.game.domain.sys.SysRanking;
+import com.ricky.game.domain.sys.SysRankingExample;
 import com.ricky.game.service.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class RankingServiceImpl implements RankingService {
 
     //新建得分榜
     public void insertPoints(SysRanking sysRanking){
-        sysRankingMapper.insert(sysRanking);
+        sysRankingMapper.updateScore(sysRanking.getUserId(),sysRanking.getUserScore());
     }
 
 
