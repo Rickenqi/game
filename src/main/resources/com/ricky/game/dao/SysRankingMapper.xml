@@ -257,7 +257,7 @@
   </update>
   <!--分页查询-->
   <select id="findAll" resultMap="BaseResultMap">
-        SELECT * FROM sys_ranking order by user_score asc
+        SELECT * FROM sys_ranking order by user_score desc
     </select>
 
 

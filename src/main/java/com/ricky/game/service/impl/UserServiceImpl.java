@@ -42,7 +42,7 @@ public class UserServiceImpl  implements UserService {
         sysRanking.setUserId(id);
         sysRanking.setUserName(sysUser.getUserName());
         sysRanking.setUserScore(0L);
-        sysUserRoleMapper.insert(sysUserRole1);
+        // sysUserRoleMapper.insert(sysUserRole1);
         rankingService.insertPoints(sysRanking);
         if(sysUser.getUserInfo().equals("admin")){
             SysUserRole sysUserRole = new SysUserRole();

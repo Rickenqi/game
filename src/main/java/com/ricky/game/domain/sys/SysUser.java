@@ -20,6 +20,7 @@ public class SysUser extends BaseEntity {
      *
      * @mbggenerated
      */
+
     private Long userId;
 
     /**
