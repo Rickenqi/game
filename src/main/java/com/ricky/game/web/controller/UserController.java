@@ -21,7 +21,7 @@ public class UserController {
 
     private Gson GSON = new GsonBuilder().create();
 
-    @PostMapping("/toLogin")
+    @PostMapping(value = "/toLogin", consumes = "application/json")
     String userLogin(@RequestBody LoginUser user) {
         SysUser permit = userService.login(user.getUserId(), user.getUserPassword());
         Result result;
@@ -33,7 +33,7 @@ public class UserController {
         return GSON.toJson(result);
     }
 
-    @PostMapping("/users/register")
+    @PostMapping(value = "/users/register", consumes = "application/json")
     String postUserInfo(@RequestBody SysUser user) {
         Result result;
         try {
