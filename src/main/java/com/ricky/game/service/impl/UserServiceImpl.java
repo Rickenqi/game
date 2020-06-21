@@ -1,5 +1,6 @@
 package com.ricky.game.service.impl;
 
+import com.ricky.game.dao.SysRankingMapper;
 import com.ricky.game.dao.SysUserMapper;
 import com.ricky.game.dao.SysUserRoleMapper;
 import com.ricky.game.domain.sys.SysRanking;
@@ -16,6 +17,8 @@ public class UserServiceImpl  implements UserService {
     private SysUserMapper sysUserMapper;
     @Autowired
     private SysUserRoleMapper sysUserRoleMapper;
+    @Autowired
+    private SysRankingMapper sysRankingMapper;
     @Autowired
     private RankingServiceImpl rankingService;
 
@@ -42,8 +45,9 @@ public class UserServiceImpl  implements UserService {
         sysRanking.setUserId(id);
         sysRanking.setUserName(sysUser.getUserName());
         sysRanking.setUserScore(0L);
-        // sysUserRoleMapper.insert(sysUserRole1);
-        rankingService.insertPoints(sysRanking);
+        sysUserRoleMapper.insert(sysUserRole1);
+        sysRankingMapper.insertSelective(sysRanking);
+        // rankingService.insertPoints(sysRanking);
         if(sysUser.getUserInfo().equals("admin")){
             SysUserRole sysUserRole = new SysUserRole();
             sysUserRole.setUserId(id);
