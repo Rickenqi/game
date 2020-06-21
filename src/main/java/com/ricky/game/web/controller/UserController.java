@@ -46,7 +46,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/users/{id}")
+    @PutMapping(value = "/users/{id}", consumes = "application/json")
     String putUserInfo(@PathVariable("id") String id, @RequestBody SysUser user) {
         Result result;
         try {
